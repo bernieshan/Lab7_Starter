@@ -180,7 +180,7 @@ function bindShowMore() {
  */
 function bindRecipeCard(recipeCard, pageName) {
   recipeCard.addEventListener('click', e => {
-    if (e.path[0].nodeName == 'A') return;
+    if (e.composedPath()[0].nodeName == 'A') return;
     router.navigate(pageName);
   });
 }
@@ -224,7 +224,7 @@ function bindPopstate() {
    */
     window.addEventListener('popstate', check => {
         if (check.state != null) {
-            router.navigate(check.state, true);
+            router.navigate(check.state['page'], true);
         }
         else {
             router.navigate('home', true);
